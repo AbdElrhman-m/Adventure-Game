@@ -98,8 +98,16 @@ def cave(monster, weapon, has_magic_sward):
                     f"You discard your silly old {monster} "
                     f"and take the {weapon} with you.",
                     "You walk back out to the field."]
-    print_pause_messages(message_list)
-    has_magic_sward.append(True)
+    list_if_visited = ["You peer cautiously into the cave.",
+                       "You've been here before, and"
+                       " gotten all the good stuff. "
+                       "It's just an empty cave now.",
+                       "You walk back out to the field."]
+    if has_magic_sward[:1]:
+        print_pause_messages(list_if_visited)
+    else:
+        print_pause_messages(message_list)
+        has_magic_sward.append(True)
 
 
 def field(monster, weapon, has_magic_sward):
