@@ -59,7 +59,7 @@ def take_action(monster, weapon, has_magic_sward):
                        " You are victorious!\n"]]
 
     action = int(input("Would you like to (1) fight or (2) run away?"))
-    if validate(action+1, choices_number=2):
+    if validate(action+1, choices_number=3):
         if action == 1:
             if has_magic_sward[:1]:
                 print_pause_messages(reflection_lst[1])
@@ -67,9 +67,9 @@ def take_action(monster, weapon, has_magic_sward):
                 print_pause_messages(reflection_lst[0])
         elif action == 2:
             field(monster, weapon)
-        else:
-            print_pause("Try again!")
-            where_to_go(monster, weapon)
+    else:
+        print_pause("Try again!")
+        take_action(monster, weapon, has_magic_sward)
 
 
 def house(monster, weapon, has_magic_sward):
@@ -102,13 +102,13 @@ def cave(monster, weapon, has_magic_sward):
     has_magic_sward.append(True)
 
 
-def field(monster, weapon):
+def field(monster, weapon, has_magic_sward):
     ####
     # Things that happen to the player in the field
     ####
     print_pause("You run back into the field. Luckily,"
                 " you don't seem to have been followed.")
-    where_to_go(monster, weapon)
+    where_to_go(monster, weapon, has_magic_sward)
 
 
 def play_again(monster, weapon, has_magic_sward):
@@ -134,17 +134,20 @@ def where_to_go(monster, weapon, has_magic_sward):
     choice_list = ["Enter 1 to knock on the door of""the house.",
                    "Enter 2 to peer into the cave."]
     print_pause_messages(choice_list)
+    print_pause("What would you like to do?")
     respond = int(input("(Please enter 1 or 2.)\n"))
     if validate(respond, len(choice_list)):
         print_pause(
             choice_list[respond-1][choice_list[respond-1].find("o ")+2:])
         if respond == 1:
             house(monster, weapon, has_magic_sward)
+            play_again(monster, weapon, has_magic_sward)
         elif respond == 2:
             cave(monster, weapon, has_magic_sward)
+            where_to_go(monster, weapon, has_magic_sward)
     else:
         print_pause("Try again!")
-    play_again(monster, weapon, has_magic_sward)
+        where_to_go(monster, weapon, has_magic_sward)
 
 
 def play_now():
