@@ -66,7 +66,7 @@ def take_action(monster, weapon, has_magic_sward):
             else:
                 print_pause_messages(reflection_lst[0])
         elif action == 2:
-            field(monster, weapon)
+            field(monster, weapon, has_magic_sward)
     else:
         print_pause("Try again!")
         take_action(monster, weapon, has_magic_sward)
@@ -132,7 +132,7 @@ def play_again(monster, weapon, has_magic_sward):
             print_pause("Thanks for playing! See you next time.")
     else:
         print_pause("Try again!")
-        where_to_go(monster, weapon, has_magic_sward)
+        play_again(monster, weapon, has_magic_sward)
 
 
 def where_to_go(monster, weapon, has_magic_sward):
