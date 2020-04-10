@@ -3,14 +3,14 @@ import time as t
 import random
 
 
-def print_pause(message, delay=0):
+def print_pause(message, delay=2):
     # printes a message with delay
     # default delay = 2
     print(message)
     t.sleep(delay)
 
 
-def print_pause_messages(message_list, delay=0):
+def print_pause_messages(message_list, delay=2):
     ####
     # looping through a list
     # and printing each massages with a delay
