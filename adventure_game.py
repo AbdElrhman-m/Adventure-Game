@@ -58,7 +58,11 @@ def take_action(monster, weapon, has_magic_sward):
                        f"You have rid the town of the {monster}."
                        " You are victorious!\n"]]
 
-    action = int(input("Would you like to (1) fight or (2) run away?"))
+    try:
+        action = int(input("Would you like to (1) fight or (2) run away?"))
+    except ValueError:
+        print_pause("Try again!")
+        take_action(monster, weapon, has_magic_sward)
     if validate(action+1, choices_number=3):
         if action == 1:
             if has_magic_sward[:1]:
@@ -143,7 +147,11 @@ def where_to_go(monster, weapon, has_magic_sward):
                    "Enter 2 to peer into the cave."]
     print_pause_messages(choice_list)
     print_pause("What would you like to do?")
-    respond = int(input("(Please enter 1 or 2.)\n"))
+    try:
+        respond = int(input("(Please enter 1 or 2.)\n"))
+    except ValueError:
+        print_pause("Try again!")
+        where_to_go(monster, weapon, has_magic_sward)
     if validate(respond, len(choice_list)):
         print_pause(
             choice_list[respond-1][choice_list[respond-1].find("o ")+2:])
