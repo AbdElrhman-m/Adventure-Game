@@ -3,14 +3,14 @@ import time as t
 import random
 
 
-def print_pause(message, delay=2):
+def print_pause(message, delay=0):
     # printes a message with delay
     # default delay = 2
     print(message)
     t.sleep(delay)
 
 
-def print_pause_messages(message_list, delay=2):
+def print_pause_messages(message_list, delay=0):
     ####
     # looping through a list
     # and printing each massages with a delay
@@ -63,7 +63,7 @@ def take_action(monster, weapon, has_magic_sward):
     except ValueError:
         print_pause("Try again!")
         take_action(monster, weapon, has_magic_sward)
-    if validate(action, choices_number=3):
+    if validate(action, choices_number=2):
         if action == 1:
             if has_magic_sward[:1]:
                 print_pause_messages(reflection_lst[1])
