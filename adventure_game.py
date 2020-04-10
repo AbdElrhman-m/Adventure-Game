@@ -131,7 +131,7 @@ def play_again(monster, weapon, has_magic_sward):
     if choice in ['y', "n", "yes", "no"]:
         if choice in ['y', 'yes']:
             print_pause("Excellent! Restarting the game ...")
-            where_to_go(monster, weapon, has_magic_sward)
+            play_now()
         elif choice in ['n', 'no']:
             print_pause("Thanks for playing! See you next time.")
     else:
@@ -166,15 +166,20 @@ def where_to_go(monster, weapon, has_magic_sward):
         where_to_go(monster, weapon, has_magic_sward)
 
 
+def set_varriables():
+    monster_list = ["Cannibals", "lion", "tiger", "wolf", "wolfman", "vampire"]
+    weapon_list = ["sword", "knife", "Shotgun", "pistol", "Machine gun"]
+    monster = random.choice(monster_list)
+    weapon = random.choice(weapon_list)
+    return monster, weapon
+
+
 def play_now():
     ####
     # start the game
     ####
-    monster_list = ["Cannibals", "lion", "tiger", "wolf", "wolfman", "vampire"]
-    weapon_list = ["sword", "knife", "Shotgun", "pistol", "Machine gun"]
     has_magic_sward = []
-    monster = random.choice(monster_list)
-    weapon = random.choice(weapon_list)
+    monster, weapon = set_varriables()
     intro(monster, weapon)
     where_to_go(monster, weapon, has_magic_sward)
 
