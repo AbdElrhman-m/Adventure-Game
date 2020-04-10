@@ -184,4 +184,5 @@ def play_now():
     where_to_go(monster, weapon, has_magic_sward)
 
 
-play_now()
+if __name__ == '__main__':
+    play_now()
